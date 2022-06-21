@@ -73,14 +73,6 @@ int checkRandomNumber()
   return 0;
 }
 
-int randomNumberGenerator(int limit)
-{
-  int randomNumber;
-  srand(time(NULL));
-  randomNumber = (1 + rand() % limit);
-  return randomNumber;
-}
-
 int randomNumberGeneratorWithRange(int min, int max)
 {
   int randomNumber;
@@ -419,9 +411,9 @@ void generateBoard()
 
     for (i = 1; i < numberOfBlocks; i++)
     {
-      randomNumber = randomNumberGenerator(9);
+      randomNumber = randomNumberGeneratorWithRange(1, 9);
       while (checkRandomNumber())
-        randomNumber = randomNumberGenerator(9);
+        randomNumber = randomNumberGeneratorWithRange(1, 9);
       randomPositionA[i] = randomNumber;
       fillTheBlockWithRandomNumber(blockNumber, blockPosition[i]);
     }
