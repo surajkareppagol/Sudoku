@@ -16,7 +16,7 @@ void gameIntroduction()
   printf("                                                 |  SUDOKU    |\n");
   printf("                                                 --------------\n\n");
 
-  printf("      WELCOME TO SUDOKU GAME CREATED IN C LANGUAGE THIS GAME HAS NINE(9) BLOCKS AND NINE(9) CELLS IN EACH BLOCK. IT WILL TAKE SOME TIME TO GENERATE THE BOARD AND ONCE THE BOARD IS GENERATED THE PROGRAM WILL PROMPT TO ENTER THE BLOCK NUMBER, CELL NUMBER AND THE VALUE. IF YOU WANT TO EXIT THE GAME ENTER 0 0 0 ALTHOUGH ONCE YOU WON THE GAME YOU WILL BE ABLE TO EXIT. THANK YOU FOR PLAYING!!! \n\n");
+  printf("      WELCOME TO SUDOKU GAME CREATED IN C LANGUAGE THIS GAME HAS NINE(9) BLOCKS AND NINE(9) CELLS IN\n EACH BLOCK. IT WILL TAKE SOME TIME TO GENERATE THE BOARD AND ONCE THE BOARD IS GENERATED THE PROGRAM\n WILL PROMPT TO ENTER THE BLOCK NUMBER, CELL NUMBER AND THE VALUE. IF YOU WANT TO EXIT THE GAME ENTER\n 0 0 0 ALTHOUGH ONCE YOU WON THE GAME YOU WILL BE ABLE TO EXIT. THANK YOU FOR PLAYING!!! \n\n");
   printf("                                        +--------+  +--------+  +--------+\n");
   printf("                                        |   1    |  |   2    |  |   3    |\n");
   printf("                                        +--------+  +--------+  +--------+\n");
