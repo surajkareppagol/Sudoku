@@ -1,14 +1,14 @@
 # SUDOKU
 
-WELCOME TO SUDOKU GAME CREATED IN C LANGUAGE THIS GAME HAS NINE(9) BLOCKS AND NINE(9) CELLS IN EACH BLOCK. IT WILL TAKE SOME TIME TO GENERATE THE BOARD AND ONCE THE BOARD IS GENERATED THE PROGRAM WILL PROMPT TO ENTER THE BLOCK NUMBER, CELL NUMBER AND THE VALUE. IF YOU WANT TO EXIT THE GAME ENTER 0 0 0 ALTHOUGH ONCE YOU WON THE GAME YOU WILL BE ABLE TO EXIT. THANK YOU FOR PLAYING!!!
+Welcome to SUDOKU game created in C Language this game has nine(9) blocks and nine(9) cells in each block. it will take some time to generate the board and once the board is generated the program will prompt to enter the block number, cell number and the value. if you want to exit the game enter 0 0 0 although once you won the game you will be able to exit. thank you for playing!!!
 
 ## TODO'S
 
-AT THIS STAGE THERE ARE A LOT OF BUGS SO MAIN PRIORITY IS TO REDUCE THEM AND ALSO I WILL TRY AND CONVERT IT TO GUI.
+At this stage there are a lot of bugs so main priority is to reduce them and also i will try and convert it to GUI.
 
 ## OUTPUT
 
-THIS ARE SOME IMAGES OF THE OUTPUT / GAME...
+This are some output images of the game.
 
 ![curvefitting output](outputImages/output1.png)
 
