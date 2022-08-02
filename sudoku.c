@@ -1,22 +1,83 @@
 /*
  *   AUTHOR : SHADOWW
- *   LAST MODIFIED : 21 / 06 / 2022
+ *   LAST MODIFIED : 07 / 07 / 2022
  */
+
+//////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <stdbool.h>
+
+//////////////////////////////////////////////////////////////////////////////
 
 int board[9][9], blockPosition[9], randomPositionA[9], blockNumber, cellNumber, numberOfBlocks, i, j, randomPosition, randomNumber;
 
+//////////////////////////////////////////////////////////////////////////////
+
+void gameIntroduction();
+void displayBoard();
+int checkBlockPosition();
+int checkRandomNumber();
+int randomNumberGeneratorWithRange(int, int);
+void fillTheBlockWithRandomNumber(int, int);
+void variableReset();
+void generateBoard();
+int checkWinCondition();
+void checkBoard();
+
+//////////////////////////////////////////////////////////////////////////////
+
+// MAIN FUNCTION
+int main()
+{
+  gameIntroduction();
+  printf("LOADING GAME .......\n\n");
+  generateBoard();
+  checkBoard();
+  displayBoard();
+  while (checkWinCondition)
+  {
+    printf("\nENTER THE BLOCK NUMBER, CELL NUMBER AND THE VALUE : ");
+    scanf("%d%d%d", &blockNumber, &cellNumber, &randomNumber);
+    if (blockNumber == 0 && cellNumber == 0 && randomNumber == 0)
+    {
+      printf("---------------------------------------------\n");
+      printf("|   OH!!!! QUITTING TRY AGAIN NEXT TIME.    |\n");
+      printf("---------------------------------------------\n");
+      break;
+    }
+    fillTheBlockWithRandomNumber(blockNumber, cellNumber);
+    displayBoard();
+  }
+
+  if (!checkWinCondition)
+  {
+    printf("------------------------------------\n");
+    printf("|   CONGRATULATIONS!!! YOU WON.    |\n");
+    printf("------------------------------------\n");
+  }
+
+  return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+// GAMR INTRO
 void gameIntroduction()
 {
   printf("                                                 --------------\n");
   printf("                                                 |  SUDOKU    |\n");
   printf("                                                 --------------\n\n");
 
-  printf("      WELCOME TO SUDOKU GAME CREATED IN C LANGUAGE THIS GAME HAS NINE(9) BLOCKS AND NINE(9) CELLS IN\n EACH BLOCK. IT WILL TAKE SOME TIME TO GENERATE THE BOARD AND ONCE THE BOARD IS GENERATED THE PROGRAM\n WILL PROMPT TO ENTER THE BLOCK NUMBER, CELL NUMBER AND THE VALUE. IF YOU WANT TO EXIT THE GAME ENTER\n 0 0 0 ALTHOUGH ONCE YOU WON THE GAME YOU WILL BE ABLE TO EXIT. THANK YOU FOR PLAYING!!! \n\n");
+  printf("  ==> ABOUT THE GAME : \n\n");
+  printf("|---------------------------------------------------------------------------------\n");
+  printf("| * WELCOME TO SUDOKU GAME CREATED IN C LANGUAGE.                                |\n");
+  printf("| * THIS GAME HAS NINE(9) BLOCKS AND NINE(9) CELLS IN EACH BLOCK.                |\n");
+  printf("| * THE PROGRAM WILL PROMPT TO ENTER THE BLOCK NUMBER, CELL NUMBER AND THE VALUE.|\n");
+  printf("| * IF YOU WANT TO EXIT THE GAME ENTER 0 0 0.                                    |\n");
+  printf("| * IT WILL TAKE SOME TIME TO GENERATE THE BOARD.                                |\n");
+  printf("|---------------------------------------------------------------------------------\n\n");
   printf("                                        +--------+  +--------+  +--------+\n");
   printf("                                        |   1    |  |   2    |  |   3    |\n");
   printf("                                        +--------+  +--------+  +--------+\n");
@@ -26,6 +87,9 @@ void gameIntroduction()
   printf("                                        +--------+  +--------+  +--------+\n");
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+// DISPLAY BOARD
 void displayBoard()
 {
   printf("----+---+----   ----+---+----   ----+---+----\n");
@@ -53,6 +117,9 @@ void displayBoard()
   printf("----+---+----   ----+---+----   ----+---+----\n");
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+// CHECK BLOCK POSITION
 int checkBlockPosition()
 {
   int indexNumber;
@@ -62,6 +129,9 @@ int checkBlockPosition()
   return 0;
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+// CHECK RANDOM NUMBER
 int checkRandomNumber()
 {
   int indexNumber;
@@ -73,6 +143,9 @@ int checkRandomNumber()
   return 0;
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+// RANDOM NUMBER GENERATOR
 int randomNumberGeneratorWithRange(int min, int max)
 {
   int randomNumber;
@@ -81,6 +154,9 @@ int randomNumberGeneratorWithRange(int min, int max)
   return randomNumber;
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+// FILL THE BLOCK WITH RANDOM NUMBER
 void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
 {
   if (blockNumber == 1)
@@ -382,6 +458,9 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
   }
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+// RESET VARIABLES
 void variableReset()
 {
   for (int i = 0; i < numberOfBlocks; i++)
@@ -394,13 +473,15 @@ void variableReset()
   randomNumber = 0;
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+// GENERATE BOARD
 void generateBoard()
 {
   int indexNumber, blockNumber = 1;
   for (indexNumber = 0; indexNumber < 9; indexNumber++)
   {
-
-    numberOfBlocks = randomNumberGeneratorWithRange(4, 7);
+    numberOfBlocks = randomNumberGeneratorWithRange(6, 8);
     for (i = 1; i < numberOfBlocks; i++)
     {
       randomPosition = randomNumberGeneratorWithRange(1, 9);
@@ -422,6 +503,9 @@ void generateBoard()
   }
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+// CHECK WIN CONDITION
 int checkWinCondition()
 {
   int indexI, indexJ, sum, score;
@@ -456,26 +540,28 @@ int checkWinCondition()
   return -1;
 }
 
-int main()
-{
-  gameIntroduction();
-  printf("LOADING GAME .......\n\n");
-  generateBoard();
-  displayBoard();
-  while (checkWinCondition)
-  {
-    printf("\nENTER THE BLOCK NUMBER, CELL NUMBER AND THE VALUE : ");
-    scanf("%d%d%d", &blockNumber, &cellNumber, &randomNumber);
-    if (blockNumber == 0 && cellNumber == 0 && randomNumber == 0)
-    {
-      printf("--------------------------\n");
-      printf("|   OH!!!! TRY AGAIN.    |\n");
-      printf("--------------------------\n");
-      break;
-    }
-    fillTheBlockWithRandomNumber(blockNumber, cellNumber);
-    displayBoard();
-  }
+//////////////////////////////////////////////////////////////////////////////
 
-  return 0;
+// CHECK BOARD FOR REPEATED NUMBERS
+void checkBoard()
+{
+  int indexI, indexJ, indexValue = 0, indexNumber, tempElement;
+  for (indexNumber = 0; indexNumber < 9; indexNumber++)
+  {
+    for (indexI = 0; indexI < 9; indexI++)
+    {
+      if (board[indexValue][indexI] != 0)
+      {
+        tempElement = board[indexValue][indexI];
+        for (indexJ = 0; indexJ < 9; indexJ++)
+        {
+          if (board[indexValue][indexJ] == tempElement && indexJ != indexI)
+            board[indexValue][indexJ] = 0;
+        }
+      }
+    }
+    indexValue += 1;
+  }
 }
+
+//////////////////////////////////////////////////////////////////////////////
