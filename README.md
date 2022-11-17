@@ -1,19 +1,43 @@
-# SUDOKU
+# Sudoku
 
-Welcome to SUDOKU game created in C Language this game has nine(9) blocks and nine(9) cells in each block. it will take some time to generate the board and once the board is generated the program will prompt to enter the block number, cell number and the value. if you want to exit the game enter 0 0 0 although once you won the game you will be able to exit. thank you for playing!!!
+This is the `Sudoku` game created in **c** language.
 
-## TODO'S
+---
 
-At this stage there are a lot of bugs so main priority is to reduce them and also i will try and convert it to GUI.
+## How to play?
 
-## OUTPUT
+In this game there are 9 blocks and each block has 9 cells.
 
-This are some output images of the game.
+![Game board](images/gameBoard.png)
 
-![curvefitting output](outputImages/output1.png)
+So you need to enter the input in this format,
 
-![curvefitting output](outputImages/output2.png)
+`Enter the block, cell number and the value 👇,`
 
-![curvefitting output](outputImages/output3.png)
+`> 1 1 1`
 
-![curvefitting output](outputImages/output4.png)
+Here the block number is **_1_**, cell number is **_1_** and the value to be inserted is also **_1_**.
+
+---
+
+## Output
+
+The program will take approximately 3 minutes 🕒, to generate the board.This is how the generated board will look like, it takes this much time due to `random number generator` in **c**.
+
+![Generated game board](images/generatedBoard.png)
+
+`Enter the block, cell number and the value 👇,`
+
+`> 2 1 2`
+
+Here the block number is **_2_**, cell number is **_1_** and the value to be inserted is also **_2_**.
+
+![Game play](images/gamePlay.png)
+
+To exit the game 🗙,
+
+`Enter the block, cell number and the value 👇,`
+
+`> 0 0 0`
+
+![Exit game](images/exitGame.png)
