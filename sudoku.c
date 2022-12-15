@@ -24,6 +24,7 @@ void checkBoardVertical();
 
 int main()
 {
+  srand(time(NULL));
   printf("* The game will take some time to generate the board, be patient 🙇.\n\n");
   generateBoard();
   checkBoardHorizontal();
@@ -82,7 +83,6 @@ int checkRandomNumber()
 // Generate random numbers within the range.
 int randomNumberGeneratorWithRange(int min, int max)
 {
-  srand(time(NULL));
   return rand() % (max - min + 1) + min;
 }
 

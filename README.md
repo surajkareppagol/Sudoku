@@ -22,8 +22,6 @@ Here the block number is **_1_**, cell number is **_1_** and the value to be ins
 
 ## Output
 
-The program will take approximately 3 minutes 🕒, to generate the board.This is how the generated board will look like, it takes this much time due to `random number generator` in **c**.
-
 ![Generated game board](images/generatedBoard.png)
 
 `Enter the block, cell number and the value 👇,`
