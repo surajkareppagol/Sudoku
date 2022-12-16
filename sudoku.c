@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#define SET_RED printf("\033[0;31m");
+#define SET_GREEN printf("\033[0;32m");
+#define SET_RESET printf("\033[0m");
 
 int board[9][9], blockPosition[9], randomPositions[9], blockNumber, cellNumber, fillPositions, i, j, randomPosition, randomNumber;
 int boardCheck[81] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -33,8 +36,11 @@ int main()
   displayBoard();
   while (checkWinCondition())
   {
+
     printf("\nEnter the block, cell number and the value 👇,\n> ");
+    SET_GREEN
     scanf("%d%d%d", &blockNumber, &cellNumber, &randomNumber);
+    SET_RESET
     if (blockNumber == 0 && cellNumber == 0 && randomNumber == 0)
     {
       printf("You can do it 👍, try again.\n");
@@ -58,7 +64,10 @@ void displayBoard()
     if (i % 3 == 0 && i > 0)
       printf("----+---+----   ----+---+----   ----+---+----\n");
     printf("----+---+----   ----+---+----   ----+---+----\n");
-    printf("| %d | %d | %d |   | %d | %d | %d |   | %d | %d | %d |\n", board[i][0], board[i][1], board[i][2], board[i][3], board[i][4], board[i][5], board[i][6], board[i][7], board[i][8]);
+    printf("|\033[0;31m %d \033[0m|\033[0;31m %d \033[0m|\033[0;31m %d \033[0m|   "
+           "|\033[0;31m %d \033[0m|\033[0;31m %d \033[0m|\033[0;31m %d \033[0m|   "
+           "|\033[0;31m %d \033[0m|\033[0;31m %d \033[0m|\033[0;31m %d \033[0m|   \n",
+           board[i][0], board[i][1], board[i][2], board[i][3], board[i][4], board[i][5], board[i][6], board[i][7], board[i][8]);
   }
   printf("----+---+----   ----+---+----   ----+---+----\n");
 }
