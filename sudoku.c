@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #define SET_RED printf("\033[0;31m");
 #define SET_GREEN printf("\033[0;32m");
 #define SET_RESET printf("\033[0m");
@@ -26,14 +27,29 @@ int checkWinCondition();
 void checkBoardHorizontal();
 void checkBoardVertical();
 
-int main()
+int checkRandomNumberHorizontal(int arr[10]);
+void checkHorizontal(int arr[10], int);
+void horizontalSolver();
+
+int main(int argc, char *argv[])
 {
   srand(time(NULL));
-  printf("* The game will take some time to generate the board, be patient 🙇.\n\n");
+  printf("* Enjoy the game and thank you for playing it 🙇.\n\n");
   generateBoard();
   checkBoardHorizontal();
   checkBoardVertical();
-  displayBoard();
+  // displayBoard();
+
+  if ((strcmp(argv[1], "-h")) == 0)
+  {
+    // printf("------------------------\n");
+    // printf("Solving horizontly\n");
+    horizontalSolver();
+    displayBoard();
+    // printf("------------------------\n");
+    return 0;
+  }
+
   while (checkWinCondition())
   {
 
@@ -812,5 +828,52 @@ void checkBoardVertical()
             board[indexJ][indexValue] = 0;
       }
     indexValue += 1;
+  }
+}
+
+int checkRandomNumberHorizontal(int arr[10])
+{
+  for (int indexNumber = 1; indexNumber < 10; indexNumber++)
+    if (arr[indexNumber] == randomNumber)
+      return 1;
+  return 0;
+}
+
+void checkHorizontal(int arr[10], int row)
+{
+  for (int j = 0; j < 9; j++)
+  {
+    if (board[row][j] != 0)
+      arr[j + 1] = board[row][j];
+  }
+}
+
+void horizontalSolver()
+{
+  int horizontalNumberArray[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  for (int i = 0; i < 9; i++)
+  {
+    checkHorizontal(horizontalNumberArray, i);
+    // printf("BEFORE SOLVING------------------\n\n");
+    // for (int h = 0; h < 10; h++)
+    //   printf("%d ", horizontalNumberArray[h]);
+    // printf("\n");
+    for (int j = 0; j < 9; j++)
+    {
+      if (!horizontalNumberArray[j + 1])
+      {
+        randomNumber = randomNumberGeneratorWithRange(1, 9);
+        while (checkRandomNumberHorizontal(horizontalNumberArray))
+          randomNumber = randomNumberGeneratorWithRange(1, 9);
+        board[i][j] = randomNumber;
+        horizontalNumberArray[j + 1] = randomNumber;
+      }
+      // printf("AFTER SOLVING------------------\n\n");
+      // for (int h = 0; h < 10; h++)
+      //   printf("%d ", horizontalNumberArray[h]);
+      // printf("\n");
+    }
+    for (int k = 0; k < 10; k++)
+      horizontalNumberArray[k] = 0;
   }
 }
