@@ -31,6 +31,10 @@ int checkRandomNumberHorizontal(int arr[10]);
 void checkHorizontal(int arr[10], int);
 void horizontalSolver();
 
+int calculateNumber(int arr[10]);
+void checkVertical(int arr[10], int);
+void verticalSolver();
+
 int main(int argc, char *argv[])
 {
   srand(time(NULL));
@@ -42,11 +46,17 @@ int main(int argc, char *argv[])
 
   if ((strcmp(argv[1], "-h")) == 0)
   {
-    // printf("------------------------\n");
-    // printf("Solving horizontly\n");
+    printf("\n------------------------\n");
+    printf("BEFORE SOLVING\n\n\n");
+    displayBoard();
+    printf("\n\n------------------------\n");
+    printf("SOLVING HORIZONTALLY\n\n\n");
     horizontalSolver();
     displayBoard();
-    // printf("------------------------\n");
+    printf("\n\n------------------------\n");
+    printf("SOLVING VERTICALLY\n\n\n");
+    verticalSolver();
+    displayBoard();
     return 0;
   }
 
@@ -875,5 +885,51 @@ void horizontalSolver()
     }
     for (int k = 0; k < 10; k++)
       horizontalNumberArray[k] = 0;
+  }
+}
+
+////////////////////////////////////////////////////
+int calculateNumber(int arr[10])
+{
+  for (int i = 1; i < 10; i++)
+  {
+    if (arr[i] == 0)
+      return i;
+  }
+}
+
+void checkVertical(int arr[10], int row)
+{
+  for (int j = 0; j < 9; j++)
+  {
+    arr[board[j][row]] = board[j][row];
+  }
+}
+
+void verticalSolver()
+{
+  int startNumber;
+  int generateNumber;
+  int veticalNumberArray[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  for (int i = 0; i < 9; i++)
+  {
+    checkVertical(veticalNumberArray, i);
+    for (int j = 0; j < 9; j++)
+    {
+      startNumber = board[j][i];
+      for (int a = j + 1; a < 9; a++)
+      {
+        if (board[a][i] == startNumber)
+        {
+          generateNumber = calculateNumber(veticalNumberArray);
+          board[a][i] = generateNumber;
+          veticalNumberArray[generateNumber] = generateNumber;
+          // printf("%d \n", generateNumber);
+        }
+      }
+    }
+    // printf("Stage %d completed\n", i);
+    for (int k = 0; k < 10; k++)
+      veticalNumberArray[k] = 0;
   }
 }

@@ -4,6 +4,18 @@ This is the `Sudoku` game created in **c** language.
 
 ---
 
+## Trying to solve it automatically !
+
+I have read that there are many different algorithms and strategies that can be applied to solve **sudoku**.But here i'm trying to implement it on my own.
+
+I created two functions to solve it horizontally and vertically.
+
+```bash
+./sudoku -hv
+```
+
+Use `-hv` option to solve it horizontally first and then vertically, but it's not correct it's still in development.
+
 ## How to play?
 
 In this game there are 9 blocks and each block has 9 cells.
