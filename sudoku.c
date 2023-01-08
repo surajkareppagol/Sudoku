@@ -11,8 +11,7 @@
 #define SET_GREEN printf("\033[0;32m");
 #define SET_RESET printf("\033[0m");
 
-int board[9][9], blockPosition[9], randomPositions[9], blockNumber, cellNumber, fillPositions, i, j, randomPosition, randomNumber;
-int boardCheck[81] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int board[9][18], blockPosition[9], randomPositions[9], blockNumber, cellNumber, fillPositions, i, j, randomPosition, randomNumber;
 
 void displayBoard();
 int checkBlockPosition();
@@ -37,18 +36,19 @@ void verticalSolver();
 
 int main(int argc, char *argv[])
 {
+  for (int x = 0; i < 9; i++)
+    for (int y = 9; j < 18; j++)
+      board[i][j] = 0;
+
   srand(time(NULL));
   printf("* Enjoy the game and thank you for playing it 🙇.\n\n");
   generateBoard();
   checkBoardHorizontal();
   checkBoardVertical();
-  // displayBoard();
+  displayBoard();
 
-  if ((strcmp(argv[1], "-h")) == 0)
+  if (argc > 1 && ((strcmp(argv[1], "-h")) == 0))
   {
-    printf("\n------------------------\n");
-    printf("BEFORE SOLVING\n\n\n");
-    displayBoard();
     printf("\n\n------------------------\n");
     printf("SOLVING HORIZONTALLY\n\n\n");
     horizontalSolver();
@@ -131,66 +131,66 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
     switch (cellNumber)
     {
     case 1:
-      if (!boardCheck[0])
+      if (!board[0][9])
       {
         board[0][0] = randomNumber;
-        boardCheck[0] = 1;
+        board[0][9] = 1;
       }
       break;
     case 2:
-      if (!boardCheck[1])
+      if (!board[0][10])
       {
         board[0][1] = randomNumber;
-        boardCheck[1] = 1;
+        board[0][10] = 1;
       }
       break;
     case 3:
-      if (!boardCheck[2])
+      if (!board[0][11])
       {
         board[0][2] = randomNumber;
-        boardCheck[2] = 1;
+        board[0][11] = 1;
       }
       break;
     case 4:
-      if (!boardCheck[3])
+      if (!board[1][9])
       {
         board[1][0] = randomNumber;
-        boardCheck[3] = 1;
+        board[1][9] = 1;
       }
       break;
     case 5:
-      if (!boardCheck[4])
+      if (!board[1][10])
       {
         board[1][1] = randomNumber;
-        boardCheck[4] = 1;
+        board[1][10] = 1;
       }
       break;
     case 6:
-      if (!boardCheck[5])
+      if (!board[1][11])
       {
         board[1][2] = randomNumber;
-        boardCheck[5] = 1;
+        board[1][11] = 1;
       }
       break;
     case 7:
-      if (!boardCheck[6])
+      if (!board[2][9])
       {
         board[2][0] = randomNumber;
-        boardCheck[6] = 1;
+        board[2][9] = 1;
       }
       break;
     case 8:
-      if (!boardCheck[7])
+      if (!board[2][10])
       {
         board[2][1] = randomNumber;
-        boardCheck[7] = 1;
+        board[2][10] = 1;
       }
       break;
     case 9:
-      if (!boardCheck[8])
+      if (!board[2][11])
       {
         board[2][2] = randomNumber;
-        boardCheck[8] = 1;
+        board[2][11] = 1;
       }
       break;
     }
@@ -200,66 +200,66 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
     switch (cellNumber)
     {
     case 1:
-      if (!boardCheck[9])
+      if (!board[0][12])
       {
         board[0][3] = randomNumber;
-        boardCheck[9] = 1;
+        board[0][12] = 1;
       }
       break;
     case 2:
-      if (!boardCheck[10])
+      if (!board[0][13])
       {
         board[0][4] = randomNumber;
-        boardCheck[10] = 1;
+        board[0][13] = 1;
       }
       break;
     case 3:
-      if (!boardCheck[11])
+      if (!board[0][14])
       {
         board[0][5] = randomNumber;
-        boardCheck[11] = 1;
+        board[0][14] = 1;
       }
       break;
     case 4:
-      if (!boardCheck[12])
+      if (!board[1][12])
       {
         board[1][3] = randomNumber;
-        boardCheck[12] = 1;
+        board[1][12] = 1;
       }
       break;
     case 5:
-      if (!boardCheck[13])
+      if (!board[1][13])
       {
         board[1][4] = randomNumber;
-        boardCheck[13] = 1;
+        board[1][13] = 1;
       }
       break;
     case 6:
-      if (!boardCheck[14])
+      if (!board[1][14])
       {
         board[1][5] = randomNumber;
-        boardCheck[14] = 1;
+        board[1][14] = 1;
       }
       break;
     case 7:
-      if (!boardCheck[15])
+      if (!board[2][12])
       {
         board[2][3] = randomNumber;
-        boardCheck[15] = 1;
+        board[2][12] = 1;
       }
       break;
     case 8:
-      if (!boardCheck[16])
+      if (!board[2][13])
       {
         board[2][4] = randomNumber;
-        boardCheck[16] = 1;
+        board[2][13] = 1;
       }
       break;
     case 9:
-      if (!boardCheck[17])
+      if (!board[2][14])
       {
         board[2][5] = randomNumber;
-        boardCheck[17] = 1;
+        board[2][14] = 1;
       }
       break;
     }
@@ -269,66 +269,66 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
     switch (cellNumber)
     {
     case 1:
-      if (!boardCheck[18])
+      if (!board[0][15])
       {
         board[0][6] = randomNumber;
-        boardCheck[18] = 1;
+        board[0][15] = 1;
       }
       break;
     case 2:
-      if (!boardCheck[19])
+      if (!board[0][16])
       {
         board[0][7] = randomNumber;
-        boardCheck[19] = 1;
+        board[0][16] = 1;
       }
       break;
     case 3:
-      if (!boardCheck[20])
+      if (!board[0][17])
       {
         board[0][8] = randomNumber;
-        boardCheck[20] = 1;
+        board[0][17] = 1;
       }
       break;
     case 4:
-      if (!boardCheck[21])
+      if (!board[1][15])
       {
         board[1][6] = randomNumber;
-        boardCheck[21] = 1;
+        board[1][15] = 1;
       }
       break;
     case 5:
-      if (!boardCheck[22])
+      if (!board[1][16])
       {
         board[1][7] = randomNumber;
-        boardCheck[22] = 1;
+        board[1][16] = 1;
       }
       break;
     case 6:
-      if (!boardCheck[23])
+      if (!board[1][17])
       {
         board[1][8] = randomNumber;
-        boardCheck[23] = 1;
+        board[1][17] = 1;
       }
       break;
     case 7:
-      if (!boardCheck[24])
+      if (!board[2][15])
       {
         board[2][6] = randomNumber;
-        boardCheck[24] = 1;
+        board[2][15] = 1;
       }
       break;
     case 8:
-      if (!boardCheck[25])
+      if (!board[2][16])
       {
         board[2][7] = randomNumber;
-        boardCheck[25] = 1;
+        board[2][16] = 1;
       }
       break;
     case 9:
-      if (!boardCheck[26])
+      if (!board[2][17])
       {
         board[2][8] = randomNumber;
-        boardCheck[26] = 1;
+        board[2][17] = 1;
       }
       break;
     }
@@ -338,66 +338,66 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
     switch (cellNumber)
     {
     case 1:
-      if (!boardCheck[27])
+      if (!board[3][9])
       {
         board[3][0] = randomNumber;
-        boardCheck[27] = 1;
+        board[3][9] = 1;
       }
       break;
     case 2:
-      if (!boardCheck[28])
+      if (!board[3][10])
       {
         board[3][1] = randomNumber;
-        boardCheck[28] = 1;
+        board[3][10] = 1;
       }
       break;
     case 3:
-      if (!boardCheck[29])
+      if (!board[3][11])
       {
         board[3][2] = randomNumber;
-        boardCheck[29] = 1;
+        board[3][11] = 1;
       }
       break;
     case 4:
-      if (!boardCheck[30])
+      if (!board[4][9])
       {
         board[4][0] = randomNumber;
-        boardCheck[30] = 1;
+        board[4][9] = 1;
       }
       break;
     case 5:
-      if (!boardCheck[31])
+      if (!board[4][10])
       {
         board[4][1] = randomNumber;
-        boardCheck[31] = 1;
+        board[4][10] = 1;
       }
       break;
     case 6:
-      if (!boardCheck[32])
+      if (!board[4][11])
       {
         board[4][2] = randomNumber;
-        boardCheck[32] = 1;
+        board[4][11] = 1;
       }
       break;
     case 7:
-      if (!boardCheck[33])
+      if (!board[5][9])
       {
         board[5][0] = randomNumber;
-        boardCheck[33] = 1;
+        board[5][9] = 1;
       }
       break;
     case 8:
-      if (!boardCheck[34])
+      if (!board[5][10])
       {
         board[5][1] = randomNumber;
-        boardCheck[34] = 1;
+        board[5][10] = 1;
       }
       break;
     case 9:
-      if (!boardCheck[35])
+      if (!board[5][11])
       {
         board[5][2] = randomNumber;
-        boardCheck[35] = 1;
+        board[5][11] = 1;
       }
       break;
     }
@@ -407,66 +407,66 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
     switch (cellNumber)
     {
     case 1:
-      if (!boardCheck[36])
+      if (!board[3][12])
       {
         board[3][3] = randomNumber;
-        boardCheck[36] = 1;
+        board[3][12] = 1;
       }
       break;
     case 2:
-      if (!boardCheck[37])
+      if (!board[3][13])
       {
         board[3][4] = randomNumber;
-        boardCheck[37] = 1;
+        board[3][13] = 1;
       }
       break;
     case 3:
-      if (!boardCheck[38])
+      if (!board[3][14])
       {
         board[3][5] = randomNumber;
-        boardCheck[38] = 1;
+        board[3][14] = 1;
       }
       break;
     case 4:
-      if (!boardCheck[39])
+      if (!board[4][12])
       {
         board[4][3] = randomNumber;
-        boardCheck[39] = 1;
+        board[4][12] = 1;
       }
       break;
     case 5:
-      if (!boardCheck[40])
+      if (!board[4][13])
       {
         board[4][4] = randomNumber;
-        boardCheck[40] = 1;
+        board[4][13] = 1;
       }
       break;
     case 6:
-      if (!boardCheck[41])
+      if (!board[4][14])
       {
         board[4][5] = randomNumber;
-        boardCheck[41] = 1;
+        board[4][14] = 1;
       }
       break;
     case 7:
-      if (!boardCheck[42])
+      if (!board[5][12])
       {
         board[5][3] = randomNumber;
-        boardCheck[42] = 1;
+        board[5][12] = 1;
       }
       break;
     case 8:
-      if (!boardCheck[43])
+      if (!board[5][13])
       {
         board[5][4] = randomNumber;
-        boardCheck[43] = 1;
+        board[5][13] = 1;
       }
       break;
     case 9:
-      if (!boardCheck[44])
+      if (!board[5][14])
       {
         board[5][5] = randomNumber;
-        boardCheck[44] = 1;
+        board[5][14] = 1;
       }
       break;
     }
@@ -476,66 +476,66 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
     switch (cellNumber)
     {
     case 1:
-      if (!boardCheck[45])
+      if (!board[3][15])
       {
         board[3][6] = randomNumber;
-        boardCheck[45] = 1;
+        board[3][15] = 1;
       }
       break;
     case 2:
-      if (!boardCheck[46])
+      if (!board[3][16])
       {
         board[3][7] = randomNumber;
-        boardCheck[46] = 1;
+        board[3][16] = 1;
       }
       break;
     case 3:
-      if (!boardCheck[47])
+      if (!board[3][17])
       {
         board[3][8] = randomNumber;
-        boardCheck[47] = 1;
+        board[3][17] = 1;
       }
       break;
     case 4:
-      if (!boardCheck[48])
+      if (!board[4][15])
       {
         board[4][6] = randomNumber;
-        boardCheck[48] = 1;
+        board[4][15] = 1;
       }
       break;
     case 5:
-      if (!boardCheck[49])
+      if (!board[4][16])
       {
         board[4][7] = randomNumber;
-        boardCheck[49] = 1;
+        board[4][16] = 1;
       }
       break;
     case 6:
-      if (!boardCheck[50])
+      if (!board[4][17])
       {
         board[4][8] = randomNumber;
-        boardCheck[50] = 1;
+        board[4][17] = 1;
       }
       break;
     case 7:
-      if (!boardCheck[51])
+      if (!board[5][15])
       {
         board[5][6] = randomNumber;
-        boardCheck[51] = 1;
+        board[5][15] = 1;
       }
       break;
     case 8:
-      if (!boardCheck[52])
+      if (!board[5][16])
       {
         board[5][7] = randomNumber;
-        boardCheck[52] = 1;
+        board[5][16] = 1;
       }
       break;
     case 9:
-      if (!boardCheck[53])
+      if (!board[5][17])
       {
         board[5][8] = randomNumber;
-        boardCheck[53] = 1;
+        board[5][17] = 1;
       }
       break;
     }
@@ -545,66 +545,66 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
     switch (cellNumber)
     {
     case 1:
-      if (!boardCheck[54])
+      if (!board[6][9])
       {
         board[6][0] = randomNumber;
-        boardCheck[54] = 1;
+        board[6][9] = 1;
       }
       break;
     case 2:
-      if (!boardCheck[55])
+      if (!board[6][10])
       {
         board[6][1] = randomNumber;
-        boardCheck[55] = 1;
+        board[6][10] = 1;
       }
       break;
     case 3:
-      if (!boardCheck[56])
+      if (!board[6][11])
       {
         board[6][2] = randomNumber;
-        boardCheck[56] = 1;
+        board[6][11] = 1;
       }
       break;
     case 4:
-      if (!boardCheck[57])
+      if (!board[7][9])
       {
         board[7][0] = randomNumber;
-        boardCheck[57] = 1;
+        board[7][9] = 1;
       }
       break;
     case 5:
-      if (!boardCheck[58])
+      if (!board[7][10])
       {
         board[7][1] = randomNumber;
-        boardCheck[58] = 1;
+        board[7][10] = 1;
       }
       break;
     case 6:
-      if (!boardCheck[59])
+      if (!board[7][11])
       {
         board[7][2] = randomNumber;
-        boardCheck[59] = 1;
+        board[7][11] = 1;
       }
       break;
     case 7:
-      if (!boardCheck[60])
+      if (!board[8][9])
       {
         board[8][0] = randomNumber;
-        boardCheck[60] = 1;
+        board[8][9] = 1;
       }
       break;
     case 8:
-      if (!boardCheck[61])
+      if (!board[8][10])
       {
         board[8][1] = randomNumber;
-        boardCheck[61] = 1;
+        board[8][10] = 1;
       }
       break;
     case 9:
-      if (!boardCheck[62])
+      if (!board[8][11])
       {
         board[8][2] = randomNumber;
-        boardCheck[62] = 1;
+        board[8][11] = 1;
       }
       break;
     }
@@ -614,66 +614,66 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
     switch (cellNumber)
     {
     case 1:
-      if (!boardCheck[63])
+      if (!board[6][12])
       {
         board[6][3] = randomNumber;
-        boardCheck[63] = 1;
+        board[6][12] = 1;
       }
       break;
     case 2:
-      if (!boardCheck[64])
+      if (!board[6][13])
       {
         board[6][4] = randomNumber;
-        boardCheck[64] = 1;
+        board[6][13] = 1;
       }
       break;
     case 3:
-      if (!boardCheck[65])
+      if (!board[6][14])
       {
         board[6][5] = randomNumber;
-        boardCheck[65] = 1;
+        board[6][14] = 1;
       }
       break;
     case 4:
-      if (!boardCheck[66])
+      if (!board[7][12])
       {
         board[7][3] = randomNumber;
-        boardCheck[66] = 1;
+        board[7][12] = 1;
       }
       break;
     case 5:
-      if (!boardCheck[67])
+      if (!board[7][13])
       {
         board[7][4] = randomNumber;
-        boardCheck[67] = 1;
+        board[7][13] = 1;
       }
       break;
     case 6:
-      if (!boardCheck[68])
+      if (!board[7][14])
       {
         board[7][5] = randomNumber;
-        boardCheck[68] = 1;
+        board[7][14] = 1;
       }
       break;
     case 7:
-      if (!boardCheck[69])
+      if (!board[8][12])
       {
         board[8][3] = randomNumber;
-        boardCheck[69] = 1;
+        board[8][12] = 1;
       }
       break;
     case 8:
-      if (!boardCheck[70])
+      if (!board[8][13])
       {
         board[8][4] = randomNumber;
-        boardCheck[70] = 1;
+        board[8][13] = 1;
       }
       break;
     case 9:
-      if (!boardCheck[71])
+      if (!board[8][14])
       {
         board[8][5] = randomNumber;
-        boardCheck[71] = 1;
+        board[8][14] = 1;
       }
       break;
     }
@@ -683,66 +683,66 @@ void fillTheBlockWithRandomNumber(int blockNumber, int cellNumber)
     switch (cellNumber)
     {
     case 1:
-      if (!boardCheck[72])
+      if (!board[6][15])
       {
         board[6][6] = randomNumber;
-        boardCheck[72] = 1;
+        board[6][15] = 1;
       }
       break;
     case 2:
-      if (!boardCheck[73])
+      if (!board[6][16])
       {
         board[6][7] = randomNumber;
-        boardCheck[73] = 1;
+        board[6][16] = 1;
       }
       break;
     case 3:
-      if (!boardCheck[74])
+      if (!board[6][17])
       {
         board[6][8] = randomNumber;
-        boardCheck[74] = 1;
+        board[6][17] = 1;
       }
       break;
     case 4:
-      if (!boardCheck[75])
+      if (!board[7][15])
       {
         board[7][6] = randomNumber;
-        boardCheck[75] = 1;
+        board[7][15] = 1;
       }
       break;
     case 5:
-      if (!boardCheck[76])
+      if (!board[7][16])
       {
         board[7][7] = randomNumber;
-        boardCheck[76] = 1;
+        board[7][16] = 1;
       }
       break;
     case 6:
-      if (!boardCheck[77])
+      if (!board[7][17])
       {
         board[7][8] = randomNumber;
-        boardCheck[77] = 1;
+        board[7][17] = 1;
       }
       break;
     case 7:
-      if (!boardCheck[78])
+      if (!board[8][15])
       {
         board[8][6] = randomNumber;
-        boardCheck[78] = 1;
+        board[8][15] = 1;
       }
       break;
     case 8:
-      if (!boardCheck[79])
+      if (!board[8][16])
       {
         board[8][7] = randomNumber;
-        boardCheck[79] = 1;
+        board[8][16] = 1;
       }
       break;
     case 9:
-      if (!boardCheck[80])
+      if (!board[8][17])
       {
         board[8][8] = randomNumber;
-        boardCheck[80] = 1;
+        board[8][17] = 1;
       }
       break;
     }
@@ -818,7 +818,10 @@ void checkBoardHorizontal()
         tempElement = board[indexValue][indexI];
         for (indexJ = 0; indexJ < 9; indexJ++)
           if (board[indexValue][indexJ] == tempElement && indexJ != indexI)
+          {
+            board[indexValue][indexJ + 9] = 0;
             board[indexValue][indexJ] = 0;
+          }
       }
     indexValue += 1;
   }
@@ -835,7 +838,10 @@ void checkBoardVertical()
         tempElement = board[indexI][indexValue];
         for (indexJ = 0; indexJ < 9; indexJ++)
           if (board[indexJ][indexValue] == tempElement && indexJ != indexI)
+          {
+            board[indexJ][indexValue + 9] = 0;
             board[indexJ][indexValue] = 0;
+          }
       }
     indexValue += 1;
   }
@@ -864,10 +870,6 @@ void horizontalSolver()
   for (int i = 0; i < 9; i++)
   {
     checkHorizontal(horizontalNumberArray, i);
-    // printf("BEFORE SOLVING------------------\n\n");
-    // for (int h = 0; h < 10; h++)
-    //   printf("%d ", horizontalNumberArray[h]);
-    // printf("\n");
     for (int j = 0; j < 9; j++)
     {
       if (!horizontalNumberArray[j + 1])
@@ -878,10 +880,6 @@ void horizontalSolver()
         board[i][j] = randomNumber;
         horizontalNumberArray[j + 1] = randomNumber;
       }
-      // printf("AFTER SOLVING------------------\n\n");
-      // for (int h = 0; h < 10; h++)
-      //   printf("%d ", horizontalNumberArray[h]);
-      // printf("\n");
     }
     for (int k = 0; k < 10; k++)
       horizontalNumberArray[k] = 0;
@@ -924,11 +922,9 @@ void verticalSolver()
           generateNumber = calculateNumber(veticalNumberArray);
           board[a][i] = generateNumber;
           veticalNumberArray[generateNumber] = generateNumber;
-          // printf("%d \n", generateNumber);
         }
       }
     }
-    // printf("Stage %d completed\n", i);
     for (int k = 0; k < 10; k++)
       veticalNumberArray[k] = 0;
   }
