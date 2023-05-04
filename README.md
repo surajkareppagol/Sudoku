@@ -1,38 +1,36 @@
 # Sudoku
 
-This is the `Sudoku` game created in **c** language.
+This is the `sudoku` game created in `C` language.
 
----
+## Automatic Game Solving
 
-## Trying to solve it automatically !
-
-I have read that there are many different algorithms and strategies that can be applied to solve **sudoku**.But here i'm trying to implement it on my own.
-
-I created two functions to solve it horizontally and vertically.
+Use `-t` option to solve it horizontally and vertically, although it is still in development.
 
 ```bash
-./sudoku -hv
+./sudoku -t
 ```
 
-Use `-hv` option to solve it horizontally first and then vertically, but it's not correct it's still in development.
+or,
 
-## How to play?
+```bash
+make test
+```
 
-In this game there are 9 blocks and each block has 9 cells.
+## How to play
+
+There are 9 blocks and each block has 9 cells.
 
 ![Game board](images/gameBoard.png)
 
-So you need to enter the input in this format,
+Enter the input in this format,
 
 `Enter the block, cell number and the value 👇,`
 
 `> 1 1 1`
 
-Here the block number is **_1_**, cell number is **_1_** and the value to be inserted is also **_1_**.
+Here the block number is `1`, cell number is `1` and the value to be inserted is also `1`.
 
----
-
-## Output
+## Sample GamePlay
 
 ![Generated game board](images/generatedBoard.png)
 
@@ -51,3 +49,8 @@ To exit the game 🗙,
 `> 0 0 0`
 
 ![Exit game](images/exitGame.png)
+
+### To Do's
+
+- Integrate `ncurses` library, and make it a `TUI` application.
+- Finish the automatic sudoku solver.
