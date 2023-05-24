@@ -20,7 +20,7 @@ make test
 
 There are 9 blocks and each block has 9 cells.
 
-![Game board](images/gameBoard.png)
+![Game board](assets/gameBoard.png)
 
 Enter the input in this format,
 
@@ -32,7 +32,7 @@ Here the block number is `1`, cell number is `1` and the value to be inserted is
 
 ## Sample GamePlay
 
-![Generated game board](images/generatedBoard.png)
+![Generated game board](assets/generatedBoard.png)
 
 `Enter the block, cell number and the value 👇,`
 
@@ -40,7 +40,7 @@ Here the block number is `1`, cell number is `1` and the value to be inserted is
 
 Here the block number is **_2_**, cell number is **_1_** and the value to be inserted is also **_2_**.
 
-![Game play](images/gamePlay.png)
+![Game play](assets/gamePlay.png)
 
 To exit the game 🗙,
 
@@ -48,7 +48,7 @@ To exit the game 🗙,
 
 `> 0 0 0`
 
-![Exit game](images/exitGame.png)
+![Exit game](assets/exitGame.png)
 
 ### To Do's
 
