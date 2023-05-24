@@ -1,10 +1,15 @@
-#include <stdio.h>
+#include <ncurses.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
 #include "sudoku.h"
+#include "decorate.h"
 
 int board[9][18], blockPosition[9], randomPositions[9], blockNumber, cellNumber, fillPositions, i, j, randomPosition, randomNumber;
+
+int rows, columns, rowPosition = 0;
+
+char borderLines[] = {"----+---+----   ----+---+----   ----+---+----\n"};
 
 /*********************************************
  *  Utility Functions
@@ -12,17 +17,19 @@ int board[9][18], blockPosition[9], randomPositions[9], blockNumber, cellNumber,
 
 void displayBoard()
 {
+
   for (int i = 0; i < 9; i++)
   {
+
     if (i % 3 == 0 && i > 0)
-      printf("----+---+----   ----+---+----   ----+---+----\n");
-    printf("----+---+----   ----+---+----   ----+---+----\n");
-    printf("| %d | %d | %d |   "
-           "| %d | %d | %d |   "
-           "| %d | %d | %d |   \n",
-           board[i][0], board[i][1], board[i][2], board[i][3], board[i][4], board[i][5], board[i][6], board[i][7], board[i][8]);
+      center(rowPosition++, &columns, borderLines);
+    center(rowPosition++, &columns, borderLines);
+    mvprintw(rowPosition++, (columns - strlen(borderLines)) / 2, "| %d | %d | %d |   "
+                                                                 "| %d | %d | %d |   "
+                                                                 "| %d | %d | %d |   \n",
+             board[i][0], board[i][1], board[i][2], board[i][3], board[i][4], board[i][5], board[i][6], board[i][7], board[i][8]);
   }
-  printf("----+---+----   ----+---+----   ----+---+----\n");
+  center(rowPosition++, &columns, borderLines);
 }
 
 int randomNumberGeneratorWithRange(int min, int max)
@@ -863,47 +870,70 @@ void verticalSolver()
 
 void test()
 {
+  initscr();
+  getmaxyx(stdscr, rows, columns);
   srand(time(NULL));
-  printf("* Enjoy the game and thank you for playing it 🙇.\n\n");
+  setBackground("main");
   generateBoard();
   removeDuplicatesHorizontal();
   removeDuplicatesVertical();
-  printf("\n- Before Solving,\n\n");
-  displayBoard();
-  printf("\n- Solving Horizontally,\n\n");
-  horizontalSolver();
-  displayBoard();
-  printf("\n- Solving Vertically,\n\n");
-  verticalSolver();
-  displayBoard();
+
+  for (int i = 0; i < 3; i++)
+  {
+    mvprintw(++rowPosition, 2, "%s - %d\n", "stage", i + 1);
+    if (i == 1)
+      horizontalSolver();
+    if (i == 2)
+      verticalSolver();
+    displayBoard();
+    refresh();
+    napms(2000);
+    rowPosition = 0;
+    clear();
+    refresh();
+  }
+  endwin();
 }
 
 void init()
 {
+  initscr();
+  getmaxyx(stdscr, rows, columns);
   srand(time(NULL));
-  printf("* Enjoy the game and thank you for playing it 🙇.\n\n");
+  setBackground("main");
+  center(rows / 2, &columns, "* Enjoy the game and thank you for playing it .\n\n");
+  getch();
+  clear();
+  refresh();
   generateBoard();
   removeDuplicatesHorizontal();
   removeDuplicatesVertical();
   displayBoard();
+  refresh();
 
   while (checkWinCondition())
   {
-    printf("\nEnter the block, cell number and the value 👇,\n> ");
-    scanf("%d%d%d", &blockNumber, &cellNumber, &randomNumber);
+    center(rows - 2, &columns, "\nEnter the block, cell number and the value ,> ");
+    scanw("%d%d%d", &blockNumber, &cellNumber, &randomNumber);
+    clear();
+    refresh();
+    rowPosition = 0;
     if (blockNumber == 0 && cellNumber == 0 && randomNumber == 0)
     {
-      printf("👍, try again.\n");
+      center(rows / 2, &columns, "try again.\n");
       break;
     }
     fillThePosition(blockNumber, cellNumber);
     displayBoard();
+    refresh();
   }
 
   if (!checkWinCondition())
-    printf("Hurray, you won take the 🏅.\n");
+    center(rows / 2, &columns, "Hurray, you won take the .\n");
   else if (checkWinCondition() && blockNumber != 0)
-    printf("You lost, try again for 🏅.\n");
+    center(rows / 2, &columns, "You lost, try again for .\n");
+  getch();
+  endwin();
 }
 
 /*********************************************

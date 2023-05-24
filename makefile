@@ -1,20 +1,20 @@
 CC = gcc
 CCFLAGS = -Wall -Werror -std=c17
-SRCS = sudoku.c main.c
-ICNS = sudoku.h
+SRCS = decorate.c sudoku.c main.c
+ICNS = decorate.h sudoku.h
 
 game: $(SRCS) $(INCS)
-	@$(CC) $(SRCS) -o game $(CCFLAGS)
+	@$(CC) $(SRCS) -o game $(CCFLAGS) -lncurses
 	@echo "Build Done, run \"make run\" to execute."
 
 .PHONY: clean
 clean:
-	rm game
+	@rm game
 	@echo "Cleaning Done."
 
 .PHONY: run
 run:
-	@./game
+	@clear && ./game
 
 .PHONY: test
 test:
