@@ -2,25 +2,11 @@
 
 This is the `sudoku` game created in `C` language.
 
-## Automatic Game Solving
-
-Use `-t` option to solve it horizontally and vertically, although it is still in development.
-
-```bash
-./sudoku -t
-```
-
-or,
-
-```bash
-make test
-```
-
 ## How to play
 
 There are 9 blocks and each block has 9 cells.
 
-![Game board](assets/gameBoard.png)
+![Game board](https://raw.githubusercontent.com/surajkareppagol/Assets/main/29%20-%20Sudoku/gameBoard.png)
 
 Enter the input in this format,
 
@@ -32,7 +18,7 @@ Here the block number is `1`, cell number is `1` and the value to be inserted is
 
 ## Sample GamePlay
 
-![Generated game board](assets/generatedBoard.png)
+![Generated game board](https://raw.githubusercontent.com/surajkareppagol/Assets/main/29%20-%20Sudoku/generatedBoard.png)
 
 `Enter the block, cell number and the value 👇,`
 
@@ -40,7 +26,7 @@ Here the block number is `1`, cell number is `1` and the value to be inserted is
 
 Here the block number is **_2_**, cell number is **_1_** and the value to be inserted is also **_2_**.
 
-![Game play](assets/gamePlay.png)
+![Game play](https://raw.githubusercontent.com/surajkareppagol/Assets/main/29%20-%20Sudoku/gamePlay.png)
 
 To exit the game 🗙,
 
@@ -48,9 +34,4 @@ To exit the game 🗙,
 
 `> 0 0 0`
 
-![Exit game](assets/exitGame.png)
-
-### To Do's
-
-- Integrate `ncurses` library, and make it a `TUI` application.
-- Finish the automatic sudoku solver.
+![Exit game](https://raw.githubusercontent.com/surajkareppagol/Assets/main/29%20-%20Sudoku/exitGame.png)
